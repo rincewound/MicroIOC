@@ -5,5 +5,5 @@ install:
   - sudo apt-get install nunit-console
 script:
   - xbuild /p:Configuration=Release MicroIOC.sln
-  after_script:
+after_script:
   - nunit-console ./MicroIOC/bin/Release/MicroIOC.Test.dll
