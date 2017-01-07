@@ -2,7 +2,8 @@ language: csharp
 solution: MicroIOC.sln
 install:
   - nuget restore MicroIOC.sln
-  - nuget install nunit-console -OutputDirectory testrunner
+  - sudo apt-get install nunit-console
 script:
   - xbuild /p:Configuration=Release MicroIOC.sln
+  after_script:
   - nunit-console ./MicroIOC/bin/Release/MicroIOC.Test.dll
