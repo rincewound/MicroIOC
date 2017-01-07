@@ -1,10 +1,11 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using MicroIOC;
+using NUnit.Framework;
 
 namespace IOCTest
 {
-    [TestClass]
+    [TestFixture]
     public class iocTests
     {
         public interface IFoo { int A(); }
@@ -31,13 +32,14 @@ namespace IOCTest
             public string importedString;
         }
 
-        public iocTests()
+        [SetUp]
+        public void Setup()
         {
             IOC.Reset();
             IOC.Register<IFnord>(() => { return new FnordImpl(); });
         }
 
-        [TestMethod]
+        [Test]
         public void Resolve_ReturnsCorrectInstance()
         {
             IOC.Register<IFoo>(() => { return new FooImpl(); });
@@ -45,7 +47,7 @@ namespace IOCTest
             Assert.IsTrue(theFoo is FooImpl);
         }
 
-        [TestMethod]
+        [Test]
         public void Resolve_BadType_ThrowsException()
         {
             try
@@ -59,7 +61,7 @@ namespace IOCTest
             }
         }
 
-        [TestMethod]
+        [Test]
         public void ImportAttribute_ResolvedAutomatically()
         {
             var imp = new Importeur();
@@ -69,7 +71,7 @@ namespace IOCTest
             Assert.IsNull(imp.notImportedFnord);
         }
 
-        [TestMethod]
+        [Test]
         public void ImportAttribute_ResolveThrowsException_If_TypeUnknown()
         {
             try
@@ -107,7 +109,7 @@ namespace IOCTest
             public RecImportA impA;
         }
 
-        [TestMethod]
+        [Test]
         public void ResolveImports_ResolvesRecursively()
         {
             IOC.Register<RecImportB>(() => { return new RecImportB(); });
