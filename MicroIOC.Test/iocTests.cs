@@ -121,6 +121,30 @@ namespace IOCTest
             Assert.IsNotNull(theB.impA);
             Assert.IsNotNull(theB.impA.tstA);
 
+        }       
+
+        interface IPrivateMemberImport
+        {
+            IFoo GetMyFoo();
+        }
+
+        class PrivateMemberImportImpl: IPrivateMemberImport
+        {
+            [MuImport]
+            private IFoo theFoo;
+
+            public IFoo GetMyFoo() { return theFoo; }
+        }
+
+        [Test]
+        public void ResolveImports_ResolvesPrivateMembers()
+        {
+            IOC.Register<IFoo>(() => { return new FooImpl(); });
+            IOC.Register<IPrivateMemberImport>(() => { return new PrivateMemberImportImpl(); });
+
+            var instance = IOC.Resolve<IPrivateMemberImport>();
+
+            Assert.IsNotNull(instance.GetMyFoo());
         }
     }
 }

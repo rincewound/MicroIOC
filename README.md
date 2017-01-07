@@ -1,5 +1,6 @@
 # Micro IOC
 A No Frills IOC
+
 Build: ![BuildState](https://travis-ci.org/rincewound/MicroIOC.svg?branch=master)
 
 ##Introduction
@@ -51,5 +52,4 @@ public static void main()
 ```
 
 ##ToDo
-* MicroIOC will not yet resolve private properties.
 * When resolving a dependency, the first available constructor will be used.

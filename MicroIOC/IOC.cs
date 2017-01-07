@@ -51,11 +51,14 @@ namespace MicroIOC
         public static void ResolveImports<T>(T target)
         {
             var ty = target.GetType();
-            var fields = ty.GetFields().Where(x => x.CustomAttributes.Any
-                                              (y => y.AttributeType == typeof(MuImport)));
+            var fields = ty.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
+                           .Where(x => x.CustomAttributes
+                           .Any(y => y.AttributeType == typeof(MuImport)));
+
             foreach (var m in fields)
             {
-                ty.InvokeMember(m.Name, BindingFlags.SetField, null, target, new object[] { UntypedResolve(m.FieldType) });
+                var bindingFlags = BindingFlags.SetField | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance;
+                ty.InvokeMember(m.Name, bindingFlags , null, target, new object[] { UntypedResolve(m.FieldType) });
             }            
         }
     }
