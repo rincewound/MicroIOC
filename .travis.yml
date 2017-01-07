@@ -1,8 +1,8 @@
 language: csharp
-solution: mutagen.sln
+solution: MicroIOC.sln
 install:
-  - nuget restore mutagen.sln
+  - nuget restore MicroIOC.sln
   - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
 script:
-  - xbuild /p:Configuration=Release mutagen.sln
-  - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./MTest/bin/Release/MTest.dll
+  - xbuild /p:Configuration=Release MicroIOC.sln
+  - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./MicroIOC/bin/Release/MicroIOC.Test.dll
