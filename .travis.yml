@@ -6,4 +6,4 @@ install:
 script:
   - xbuild /p:Configuration=Release MicroIOC.sln
 after_script:
-  - nunit-console ./MicroIOC/bin/Release/MicroIOC.Test.dll
+  - nunit-console ./MicroIOC.Test/bin/Release/MicroIOC.Test.dll
