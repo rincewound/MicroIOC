@@ -13,6 +13,8 @@ usable, so I decided to share.
 
 ##Example
 
+```C#
+
 interface Greeter
 {
   void Greet();
@@ -45,6 +47,7 @@ public static void main()
 
   imp.myGreeter.Greet();  // Prints "Hello World!"
 }
+```
 
 ##ToDo
 * MicroIOC will not yet resolve private properties.
