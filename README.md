@@ -1,5 +1,6 @@
 # Micro IOC
 A No Frills IOC
+Build: ![BuildState](https://travis-ci.org/rincewound/MicroIOC.svg?branch=master)
 
 ##Introduction
 Why another IOC? Easy: I needed something simple for unittesting and had no
