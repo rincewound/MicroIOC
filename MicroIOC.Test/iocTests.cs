@@ -146,5 +146,16 @@ namespace IOCTest
 
             Assert.IsNotNull(instance.GetMyFoo());
         }
+
+        [Test]
+        public void ResolveImportsForObject_ResolvesMembers()
+        {
+            IOC.Register<IFoo>(() => { return new FooImpl(); });
+
+            var tmp = new PrivateMemberImportImpl();
+            IOC.ResolveImportsForObject(tmp);
+
+            Assert.IsNotNull(instance.GetMyFoo());
+        }
     }
 }

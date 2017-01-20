@@ -61,5 +61,6 @@ namespace MicroIOC
                 ty.InvokeMember(m.Name, bindingFlags , null, target, new object[] { UntypedResolve(m.FieldType) });
             }            
         }
+
     }
 }
