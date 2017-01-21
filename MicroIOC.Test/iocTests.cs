@@ -153,9 +153,9 @@ namespace IOCTest
             IOC.Register<IFoo>(() => { return new FooImpl(); });
 
             var tmp = new PrivateMemberImportImpl();
-            IOC.ResolveImportsForObject(tmp);
+            IOC.ResolveImports(tmp);
 
-            Assert.IsNotNull(instance.GetMyFoo());
+            Assert.IsNotNull(tmp.GetMyFoo());
         }
     }
 }
