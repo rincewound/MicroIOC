@@ -50,6 +50,7 @@ namespace MicroIOC
 
         public static void ResolveImports<T>(T target)
         {
+#if !NETCOREAPP1_1
             var ty = target.GetType();
             var fields = ty.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
                            .Where(x => x.CustomAttributes
@@ -59,7 +60,8 @@ namespace MicroIOC
             {
                 var bindingFlags = BindingFlags.SetField | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance;
                 ty.InvokeMember(m.Name, bindingFlags , null, target, new object[] { UntypedResolve(m.FieldType) });
-            }            
+            }   
+#endif
         }
 
     }

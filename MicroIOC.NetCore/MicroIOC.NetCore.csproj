@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\MicroIOC\ImportAttrib.cs" Link="ImportAttrib.cs" />
+    <Compile Include="..\MicroIOC\IOC.cs" Link="IOC.cs" />
+    <Compile Include="..\MicroIOC\UnknownTypeException.cs" Link="UnknownTypeException.cs" />
+  </ItemGroup>
+
+</Project>
